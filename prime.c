@@ -8,6 +8,8 @@
 int main(void)
 {
     unsigned prime_candidate;
+	unsigned prime_candidate1;
+	unsigned prime_candidate2;
 
     while((prime_candidate = io_ask()) > 0)
     {

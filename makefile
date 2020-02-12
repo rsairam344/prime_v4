@@ -1,34 +1,36 @@
 ######################################################################
-# A very simple makefile (Windows) for basic CTC++ demo with 'prime'
 #
-#                  Copyright (c) 2000 Testwell Oy
-######################################################################
-
-######################################################################
-# Compiler flags
-
-CC	= cl
-LINK32	= cl
-LFLAGS  = -Fe
-
+# This is a sample makefile for prime example for unix/linux
 #
-# ===================================================================
+#                  Copyright (c) 2001-2011 Testwell Oy
+######################################################################
+# Last modified 6.9.2011
+
+# C Compiler
+CC	    = gcc
+
+# C Linker
+LINK	= gcc
+
+######################################################################
 
 # Executable name
-EXENAME = prime.exe
+EXENAME	= prime
 
 # Sourcefiles and objectfiles
 SRCS    = prime.c io.c calc.c
-OBJS    = $(SRCS:.c=.obj)
+OBJS    = $(SRCS:.c=.o)
 
 # Rule for compiling .c files:
-.c.obj:
+.c.o:
 	$(CC) -c $<
 
 # The main target, builds executable
 all: $(OBJS)
-	$(LINK32) $(LFLAGS)$(EXENAME) $(OBJS)
+	$(LINK) -o $(EXENAME) $(OBJS)
 
+# Clean target
 clean:
-    @if exist *.obj del *.obj
-    @if exist prime.exe del prime.exe
+	rm -f $(OBJS) $(EXENAME)
+
+
